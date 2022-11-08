@@ -30,7 +30,7 @@ class NetworkHandler {
     var token = await storage.read(key: "token");
     var response = await http.get(
       url,
-      headers: {"Authorization": "this is token:$token"},
+      headers: {"Authorization": "this is my token$token"},
     );
     if (response.statusCode == 200 || response.statusCode == 201) {
       log.i(response.body);
@@ -45,7 +45,7 @@ class NetworkHandler {
     var response = await http.post(Uri.parse(baseurl + url),
         headers: {
           "Content-type": "application/json",
-          "Authorization": "this is token:$token"
+          "Authorization": "this is my token$token"
         },
         body: json.encode(body));
     return response;
@@ -75,7 +75,7 @@ class NetworkHandler {
     var response = await http.patch(Uri.parse(baseurl + url),
         headers: {
           "Content-type": "application/json",
-          "Authorization": "this is token:$token"
+          "Authorization": "this is my token$token"
         },
         body: json.encode(body));
     return response;

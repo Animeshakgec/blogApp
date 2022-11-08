@@ -1,4 +1,5 @@
 import 'package:bloggapp/bottompages/acc_subset/blogs.dart';
+import 'package:bloggapp/bottompages/acc_subset/otherblogs.dart';
 import 'package:flutter/material.dart';
 
 class home extends StatefulWidget {
@@ -21,11 +22,7 @@ class _homeState extends State<home> {
                   fontFamily: "Ubuntu", fontSize: 20.0, color: Colors.black),
             ),
             backgroundColor: Colors.cyan.shade100),
-        body: SingleChildScrollView(
-          child: Blogs(
-            url: "/blogs/getOtherBlog",
-          ),
-        ),
+        body: otherblogs(),
       ),
     );
   }

@@ -12,14 +12,14 @@ AddBlogModel _$AddBlogModelFromJson(Map<String, dynamic> json) => AddBlogModel(
       username: json['username'],
       title: json['title'],
       body: json['body'],
-      count: json['count'],
+      like: json['count'],
       share: json['share'],
       comment: json['comment'],
     );
 
 Map<String, dynamic> _$AddBlogModelToJson(AddBlogModel instance) =>
     <String, dynamic>{
-      'count': instance.count,
+      'like': instance.like,
       'share': instance.share,
       'comment': instance.comment,
       '_id': instance.id,

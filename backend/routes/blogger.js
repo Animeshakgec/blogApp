@@ -69,10 +69,10 @@ const storage = multer.diskStorage({
     try{
         const blogs=await Blogs.find({username:{$ne:req.decoded.username}})
         if(blogs){
-            res.json({data:blogs})
+            res.json(blogs)
         }
         else{
-            res.json({data:[]})
+            res.json(" ")
         }
     }catch(err){
         res.json({err:err})

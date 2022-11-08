@@ -4,7 +4,7 @@ part 'addBlogModel.g.dart';
 
 @JsonSerializable()
 class AddBlogModel {
-  var count;
+  var like;
   var share;
   var comment;
   @JsonKey(name: "_id")
@@ -19,7 +19,7 @@ class AddBlogModel {
       this.username,
       this.title,
       this.body,
-      this.count,
+      this.like,
       this.share,
       this.comment});
 

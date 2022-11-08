@@ -1,67 +1,39 @@
-// import 'dart:convert';
-
-// import 'package:json_annotation/json_annotation.dart';
-
-// import 'addBlogModel.dart';
-
-// part 'SuperModel.g.dart';
-
-// @JsonSerializable()
-// class SuperModel {
-//   final List<AddBlogModel> data;
-//   SuperModel({required this.data});
-//   factory SuperModel.fromJson(Map<String, dynamic> json) =>
-//       _$SuperModelFromJson(json);
-//   Map<String, dynamic> toJson() => _$SuperModelToJson(this);
-// }
 // To parse this JSON data, do
 //
-//     final welcome = welcomeFromJson(jsonString);
+//     final supermodels = supermodelsFromJson(jsonString);
 
 import 'dart:convert';
 
-Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
+List<Supermodels> supermodelsFromJson(String str) => List<Supermodels>.from(
+    json.decode(str).map((x) => Supermodels.fromJson(x)));
 
-String welcomeToJson(Welcome data) => json.encode(data.toJson());
+String supermodelsToJson(List<Supermodels> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Welcome {
-  Welcome({
-    required this.data,
-  });
-
-  List<Datum> data;
-
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "data": List<dynamic>.from(data.map((x) => x.toJson())),
-      };
-}
-
-class Datum {
-  Datum({
+class Supermodels {
+  Supermodels({
     required this.id,
     required this.username,
-    this.title,
-    this.body,
-    this.coverImage,
-    this.like,
-    this.share,
-    this.comment,
+    required this.title,
+    required this.body,
+    required this.coverImage,
+    required this.like,
+    required this.share,
+    required this.comment,
+    required this.v,
   });
 
-  var like;
-  var share;
-  var comment;
-  var id;
-  var coverImage;
-  var username;
-  var title;
-  var body;
+  String id;
+  String username;
+  String title;
+  String body;
+  String coverImage;
+  int like;
+  int share;
+  int comment;
+  int v;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory Supermodels.fromJson(Map<String, dynamic> json) => Supermodels(
         id: json["_id"],
         username: json["username"],
         title: json["title"],
@@ -70,6 +42,7 @@ class Datum {
         like: json["like"],
         share: json["share"],
         comment: json["comment"],
+        v: json["__v"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -81,5 +54,6 @@ class Datum {
         "like": like,
         "share": share,
         "comment": comment,
+        "__v": v,
       };
 }
